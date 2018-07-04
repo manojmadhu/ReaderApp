@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ef5350</color>
+    <color name="colorPrimaryDark">#e53935</color>
+    <color name="colorPrimaryDark2">#E91E63</color>
+
+    <color name="colorAccent">#FF4081</color>
+    <color name="appBackground">#FFFFFF</color>
+    <color name="colorFontBlack">#212121</color>
+    <color name="colorFontOtherBlack">#999999</color>
+    <color name="colorview">#ecf0f1</color>
+    
+    <color name="colorIconBackground1">#9CCC65</color>
+    <color name="colorIconBackground2">#283593</color>
+    <color name="colorIconBackground3">#2E7D32</color>
+    <color name="colorIconBackground4">#D84315</color>
+
+
+    <color name="editTextBG">#DADADA</color>
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="textColor">#6e6e6e</color>
+</resources>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@color/appBackground"
+    >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:padding="25px">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/label1"
+            android:textSize="18dp"
+            android:textColor="@color/colorFontBlack"
+            android:fontFamily="monospace"
+            android:text="Your Name " />
+        <EditText
+            android:id="@+id/textname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:textAllCaps="true"
+            android:textColor="@color/colorFontOtherBlack"
+            android:theme="@style/MyEditText"
+            android:fontFamily="monospace"
+            android:inputType="text"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="@color/colorFontBlack"
+            android:fontFamily="monospace"
+            android:text="NIC Number" />
+        <EditText
+            android:id="@+id/textnic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:maxLength="12"
+            android:textAllCaps="true"
+            android:textColor="@color/colorFontOtherBlack"
+            android:theme="@style/MyEditText"
+            android:fontFamily="monospace"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="@color/colorFontBlack"
+            android:fontFamily="monospace"
+            android:text="Contact Number" />
+
+        <EditText
+            android:id="@+id/textmobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:imeOptions="actionNext"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:singleLine="true"
+            android:textColor="@color/colorFontOtherBlack"
+            android:theme="@style/MyEditText" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="@color/colorFontBlack"
+            android:fontFamily="monospace"
+            android:text="Email Address" />
+        <EditText
+            android:id="@+id/textemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/colorFontOtherBlack"
+            android:theme="@style/MyEditText"
+            android:fontFamily="monospace"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="@color/colorFontBlack"
+            android:fontFamily="monospace"
+            android:text="Password" />
+        <EditText
+            android:id="@+id/textpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:password="true"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:textColor="@color/colorFontOtherBlack"
+            android:theme="@style/MyEditText"
+            android:fontFamily="monospace"/>
+
+        <Button
+            android:text="Register Me"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:id="@+id/btnRegister"
+            android:onClick="OnRegisterMe"
+            android:textColor="@color/appBackground"
+            android:textStyle="bold"
+            android:theme="@style/MyButton"
+            android:fontFamily="monospace"/>
+
+    </LinearLayout>
+</ScrollView>

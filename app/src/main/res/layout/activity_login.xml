@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@color/appBackground"
+    >
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:padding="25px">
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginBottom="5dp"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/get_money"
+            />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/textnic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:hint="NIC Number"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:textColor="@color/colorFontBlack"
+            android:theme="@style/MyEditText"
+            android:layout_marginBottom="5dp"/>
+
+
+
+        <EditText
+            android:id="@+id/textpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:imeOptions="actionDone"
+            android:password="true"
+            android:singleLine="true"
+            android:hint="Password"
+            android:textColor="@color/colorFontBlack"
+            android:theme="@style/MyEditText" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnlogin"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:onClick="OnloginClick"
+                android:text="Log In"
+                android:textColor="@color/appBackground"
+                android:textStyle="bold"
+                android:theme="@style/MyButton" />
+
+            <Button
+                android:id="@+id/btnregister"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:onClick="OnregisterClick"
+                android:text="Register Me"
+                android:textColor="@color/appBackground"
+                android:textStyle="bold"
+                android:theme="@style/MyButton" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="Don't have an account? Click register"
+            android:textColor="@color/colorFontBlack" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+</ScrollView>
