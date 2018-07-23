@@ -27,6 +27,7 @@ import com.google.zxing.client.android.BeepManager;
 
 import com.google.zxing.Result;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -228,6 +229,25 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
            return SendBarcodes();
 
 
+        }
+
+        @Override
+        protected void onPostExecute(String response) {
+            super.onPostExecute(response);
+            if(response!=null){
+                try {
+                    JSONObject jobj = new JSONObject(response);
+                    String res = jobj.getString("State");
+
+                    if(res.equals("0")){
+                        Toast.makeText(MainActivity.this, "Done.You scanned one or more duplicate barcode.", Toast.LENGTH_SHORT).show();
+                    }else if(res.equals("1")){
+                        Toast.makeText(MainActivity.this, "Barcode uploaded successfully.", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
