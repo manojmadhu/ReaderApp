@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="reader.com.nipponit.readerapp.ScanActivity">
+
+
+
+
+    <fragment
+        android:id="@+id/barcode_scanner"
+        android:name="reader.com.nipponit.readerapp.BarcodeReader.BarcodeReader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:auto_focus="true"
+        app:use_flash="false"
+        tools:layout="@layout/fragment_barcode_reader" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="25dp"
+        android:text="Place the QR code in the center of the square. It will be scanned automatically."
+        android:textColor="@color/white" />
+
+
+    <reader.com.nipponit.readerapp.BarcodeReader.ScannerOverlay
+        android:id="@+id/barcode_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="#44000000"
+        app:line_color="@color/colorIconBackground1"
+        app:line_speed="0"
+        app:line_width="4"
+        app:square_height="250"
+        app:square_width="250" />
+
+
+    <TextView
+        android:id="@+id/lblbcount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="25dp"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

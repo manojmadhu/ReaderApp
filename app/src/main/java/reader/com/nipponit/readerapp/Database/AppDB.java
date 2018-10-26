@@ -144,22 +144,69 @@ public class AppDB extends SQLiteOpenHelper {
     }
 
     public String RetrivewID(){
-        String nic = "";
+        String UID = "";
         SQLiteDatabase db = this.getReadableDatabase();
         String [] col = {col_user_id};
         try{
             Cursor cursor = db.query(Tb_User,col,col_user_logstat+"='x'",null,null,null,null);
             if(cursor!=null){
                 while(cursor.moveToNext()) {
-                    nic = cursor.getString(0);
+                    UID = cursor.getString(0);
                 }
             }
         }catch (Exception ex){
             Log.w("error",ex.getMessage());
         }
-        return nic;
+        return UID;
     }
 
+    public void ClearUser(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        try{
+            db.delete(Tb_User,null,null);
+        }catch (Exception ex){
+
+        }
+    }
+
+    //Remove sent barcodes, after sending
+    public boolean RemoveBarcode(){
+        boolean isdelete=false;
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            isdelete = returnSaveState(db.delete(Tb_Barcodes, null,null));
+        }catch (SQLiteException e){
+
+        }catch (Exception e){
+
+        }
+        return isdelete;
+    }
+
+   public int ReturnBarcodeCount(){
+        try{
+            SQLiteDatabase db = this.getReadableDatabase();
+            String [] col ={col_barcode_id};
+            Cursor curbarcode = db.query(Tb_Barcodes,col,null,null,null,null,null);
+            return curbarcode.getCount();
+        }catch (Exception ex){
+
+        }
+        return  0;
+   }
+
+    public Cursor ReturnMyInfo(){
+        Cursor userData=null;
+        try{
+            SQLiteDatabase db = this.getReadableDatabase();
+            String cols[]={col_user_name,col_user_nic,col_user_contact,col_user_email};
+            userData = db.query(Tb_User,cols,col_user_logstat+"='x'",
+                    null,null,null,null);
+        }catch (Exception ex){
+
+        }
+        return userData;
+    }
 
     private boolean returnSaveState(long res){
         if(res==-1)
@@ -167,5 +214,4 @@ public class AppDB extends SQLiteOpenHelper {
         else
             return true;
     }
-
 }

@@ -1,5 +1,6 @@
 package reader.com.nipponit.readerapp.UserController;
 
+import android.app.ActionBar;
 import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,23 +40,42 @@ import reader.com.nipponit.readerapp.SelectionActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
-    TextView txtnic,txtpassword;
+    TextView txtnic,txtpassword,txtforgetpw;
     Button btnlogin; TextView btnregister;
     AppDB LocalDb;
     static int REQUSET_CODE=0,RESULT_CODE=0;
-
+    static String UID="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        if(getSupportActionBar()!=null)
+            {getSupportActionBar().hide();}
+
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        txtforgetpw = (TextView)findViewById(R.id.txtforgetPW);
         txtnic = (TextView)findViewById(R.id.textnic);
         txtpassword = (TextView)findViewById(R.id.textpassword);
         btnlogin = (Button)findViewById(R.id.btnlogin);
         btnregister = (TextView)findViewById(R.id.btnregister);
 
+        if (this.isLogged()){
+            Intent selectionIntent = new Intent(LoginActivity.this, SelectionActivity.class);
+            selectionIntent.putExtra("UID",UID);
+            startActivity(selectionIntent);
+            finish();
+        }
 
+
+    }
+
+    public void OnResetPW(View view){
+        Intent intent = new Intent(LoginActivity.this,ContactNumberActivity.class);
+        startActivity(intent);
+        Toast.makeText(this, "click", Toast.LENGTH_SHORT).show();
     }
 
     public void OnloginClick(View view){
@@ -134,11 +156,14 @@ public class LoginActivity extends AppCompatActivity {
                         contact = Jobject.getString("contact");
                         email = Jobject.getString("email");
 
+                        //#clear current user and save new user
+                        LocalDb.ClearUser();
                         boolean status = LocalDb.SaveToLocalUser(id, name, nic, contact, email);
 
                         if (status) {
                             Toast.makeText(LoginActivity.this, "Hi, welcome " + name + " !", Toast.LENGTH_SHORT).show();
                             Intent selectionIntent = new Intent(LoginActivity.this, SelectionActivity.class);
+                            selectionIntent.putExtra("UID",id);
                             startActivity(selectionIntent);
                             finish();
                         } else
@@ -200,6 +225,20 @@ public class LoginActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    private Boolean isLogged(){
+        Boolean islog = false;
+        LocalDb = new AppDB(getApplicationContext());
+        try{
+            UID = LocalDb.RetrivewID();
+            if(!UID.equals("")){
+                islog = true;
+            }
+        }catch (Exception ex){
+
+        }
+        return islog;
     }
 
 }

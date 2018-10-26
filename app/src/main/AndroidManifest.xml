@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="reader.com.nipponit.readerapp">
+    package="reader.com.nipponit.readerapp"
+    android:installLocation="auto">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -16,19 +18,55 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="barcode" />
+
         <activity android:name=".MainActivity" />
-        <activity android:name=".UserController.LoginActivity">
+        <activity android:name=".UserController.LoginActivity"
+           >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UserController.RegisterActivity" />
-        <activity android:name=".SelectionActivity"></activity>
-        <activity android:name=".ActivityZxing">
-
+        <activity android:name=".UserController.RegisterActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SelectionActivity"></meta-data>
         </activity>
+        <activity
+            android:name=".SelectionActivity"
+            android:launchMode="standard" />
+        <activity android:name=".ActivityZxing" />
+        <activity android:name=".ScanActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SelectionActivity" />
+        </activity>
+
+        <receiver android:name=".HttpConnector.ConnectivityStatus">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="reader.com.nipponit.readerapp.CUSTOM_INTENT"></action> -->
+            <!-- </intent-filter> -->
+        </receiver>
+
+        <activity android:name=".MypointsActivity" >
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SelectionActivity"></meta-data>
+        </activity>
+
+        <activity android:name=".UserController.MyinfoActivity" />
+        <activity
+            android:name=".UserController.MobileVerificationActivity"
+            android:configChanges="orientation|keyboard"
+            android:windowSoftInputMode="stateAlwaysVisible" />
+        <activity android:name=".UserController.PasswordResetActivity" />
+        <activity android:name=".UserController.ContactNumberActivity"></activity>
     </application>
 
 </manifest>

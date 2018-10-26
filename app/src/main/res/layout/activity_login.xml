@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:background="@color/appBackground"
+    android:background="@drawable/loginbackground"
     >
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -28,8 +28,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/get_money"
-            />
+            android:layout_margin="10dp"
+            android:src="@drawable/log" />
 
 
     </LinearLayout>
@@ -46,13 +46,14 @@
             android:id="@+id/textnic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="monospace"
             android:hint="NIC Number"
             android:imeOptions="actionNext"
             android:singleLine="true"
             android:textColor="@color/colorFontBlack"
             android:theme="@style/MyEditText"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            android:drawableLeft="@drawable/ic_user_black"
+            />
 
 
 
@@ -60,14 +61,27 @@
             android:id="@+id/textpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="monospace"
             android:imeOptions="actionDone"
-            android:password="true"
+            android:inputType="textPassword"
             android:singleLine="true"
             android:hint="Password"
             android:textColor="@color/colorFontBlack"
-            android:theme="@style/MyEditText" />
+            android:theme="@style/MyEditText"
+            android:drawableLeft="@drawable/ic_password_black"/>
 
+
+        <TextView
+            android:id="@+id/txtforgetPW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password?"
+            android:textColor="@color/blue"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="right"
+            android:onClick="OnResetPW"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -81,11 +95,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
                 android:layout_weight="1"
-                android:fontFamily="monospace"
                 android:onClick="OnloginClick"
-                android:text="Log In"
-                android:textColor="@color/appBackground"
+                android:text="Log in"
                 android:textStyle="bold"
+                android:textColor="@color/appBackground"
                 android:theme="@style/MyButton" />
 
             <Button
@@ -93,11 +106,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
                 android:layout_weight="1"
-                android:fontFamily="monospace"
                 android:onClick="OnregisterClick"
                 android:text="Register Me"
-                android:textColor="@color/appBackground"
                 android:textStyle="bold"
+                android:textColor="@color/appBackground"
                 android:theme="@style/MyButton" />
         </LinearLayout>
 
@@ -105,10 +117,8 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="monospace"
             android:text="Don't have an account? Click register"
             android:textColor="@color/colorFontBlack" />
-
 
     </LinearLayout>
 

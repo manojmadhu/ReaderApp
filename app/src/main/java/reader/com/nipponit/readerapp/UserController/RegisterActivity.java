@@ -14,6 +14,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -44,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
     AppDB LocalDb;
     String LocalNumber="0",ImeiNumber="0";
     private final int REQUSET_PHONE_STATE = 1;
+    static String KEY="TELNO";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,45 +77,74 @@ public class RegisterActivity extends AppCompatActivity {
             Log.w("error",ex.getMessage());
         }
 
+
         txtname.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                String txt = txtname.getText().toString();
-                if(txt.matches(".*\\d+.*")){
-                    txtname.setTextColor(Color.RED);
-                    Toast.makeText(RegisterActivity.this, "Invalid Name", Toast.LENGTH_SHORT).show();
-                }else{
-                    txtname.setTextColor(Color.parseColor("#999999"));
-                    stsname=true;
-                }
+                validateName();
             }
         });
+        txtname.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                validateName();
+            }
+        });
+
 
         txtnic.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                String txt = txtnic.getText().toString();
-                if(!txt.equals("") && txt.length() != 12 && !txt.matches("^[0-9]{9}[vVxX]$")) {
-                    txtnic.setTextColor(Color.RED);
-                    Toast.makeText(RegisterActivity.this, "Invalid NIC", Toast.LENGTH_SHORT).show();
-                }else {
-                    txtnic.setTextColor(Color.parseColor("#999999"));
-                    stsnic=true;
-                }
+                validateNIC();
+            }
+        });
+        txtnic.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                validateNIC();
             }
         });
 
         txtcontact.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                String txt = txtcontact.getText().toString();
-                if(!txt.equals("")  && txt.length()!=10){
-                    txtcontact.setTextColor(Color.RED);
-                    Toast.makeText(RegisterActivity.this, "Invalid Contact Number", Toast.LENGTH_SHORT).show();
-                }else {
-                    txtcontact.setTextColor(Color.parseColor("#999999"));
-                    stsnumber=true;
-                }
+              validateContact();
+            }
+        });
+        txtcontact.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                validateContact();
             }
         });
 
@@ -129,11 +161,51 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void OnRegisterMe(View v){
         if(stsname && stsnic && stsnumber && (txtpassword.getText().toString().length()>0)){
+//            Intent intent=new Intent(RegisterActivity.this,MobileVerificationActivity.class);
+//            intent.putExtra(KEY,txtcontact.getText().toString());
+//            startActivity(intent);
+
             new UserRegistration().execute();
         }else
             Toast.makeText(this, "Please check mandatory fields.", Toast.LENGTH_SHORT).show();
     }
 
+
+
+    private void validateName(){
+        String txt = txtname.getText().toString();
+        //if(txt.matches(".*\\d+.*")){
+        if(!txt.matches("[a-zA-Z ]*")){
+            txtname.setTextColor(Color.RED);
+            //Toast.makeText(RegisterActivity.this, "Invalid Name", Toast.LENGTH_SHORT).show();
+            stsname=false;
+        }else{
+            txtname.setTextColor(Color.parseColor("#999999"));
+            stsname=true;
+        }
+    }
+    private void validateNIC(){
+        String txt = txtnic.getText().toString();
+        if(!txt.equals("") && txt.length() != 12 && !txt.matches("^[0-9]{9}[vVxX]$")) {
+            txtnic.setTextColor(Color.RED);
+            //Toast.makeText(RegisterActivity.this, "Invalid NIC", Toast.LENGTH_SHORT).show();
+            stsnic=false;
+        }else {
+            txtnic.setTextColor(Color.parseColor("#999999"));
+            stsnic=true;
+        }
+    }
+    private void validateContact(){
+        String txt = txtcontact.getText().toString();
+        if(!(txt.matches("[0-9.?]*")) || (!txt.equals("")  && txt.length()!=10)){
+            txtcontact.setTextColor(Color.RED);
+            //Toast.makeText(RegisterActivity.this, "Invalid Contact Number", Toast.LENGTH_SHORT).show();
+            stsnumber=false;
+        }else {
+            txtcontact.setTextColor(Color.parseColor("#999999"));
+            stsnumber=true;
+        }
+    }
 
     class UserRegistration extends AsyncTask<Void,Void,String>{
         ProgressDialog progressDialog;
@@ -197,6 +269,7 @@ public class RegisterActivity extends AppCompatActivity {
             progressDialog.dismiss();
 
         }
+
 
 
 

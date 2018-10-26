@@ -1,3 +1,48 @@
 <resources>
     <string name="app_name">ReaderApp</string>
+
+    <string name="ok">OK</string>
+    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
+    <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
+    <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
+    <string name="title_activity_main">Barcode Reader Sample</string>
+    <string name="barcode_header">Click &quot;Read Barcode&quot; to read a barcode</string>
+    <string name="read_barcode">Read Barcode</string>
+    <string name="auto_focus">Auto Focus</string>
+    <string name="use_flash">Use Flash</string>
+    <string name="barcode_success">Barcode read successfully</string>
+    <string name="barcode_failure">No barcode captured</string>
+    <string name="barcode_error">"Error reading barcode: %1$s"</string>
+
+
+    <string name="grant_permission">Grant Permission</string>
+    <string name="permission_camera">This app needs camera permission to scan barcode</string>
+    <string name="grant">GRANT</string>
+    <string name="cancel">CANCEL</string>
+
+    <string name="scan_barcode">Scan Barcode</string>
+    <string name="mypoints">My Points</string>
+    <string name="scan_history">Scan History</string>
+    <string name="my_info">My Info</string>
+    <string name="mobilehint">Mobile number (ex: 0771234567)</string>
+
+    <string name="vertification">Verification Code</string>
+    <string name="verificationtext">Please type the verification code sent to</string>
+    <string name="verificationresend">Didn\'t receive the CODE? </string>
+    <string name="resend">RESEND CODE</string>
+    <string name="verify">verify me</string>
+
+
+    <string name="forgotpw">Forgot Password?</string>
+    <string name="forgotpwtext">We need your mobile number \n to send reset code</string>
+    <string name="prheader">Reset current password</string>
+    <string name="prtext">Please type the RESET CODE sent your mobile</string>
+    <string name="reset">reset password</string>
+    <string name="confirm">Confirm  password</string>
+    <string name="newpassword">New Password</string>
+
+    <string name="alertdialogexsit">Are you sure to Logout?</string>
+    <string name="alertsend">System message</string>
+    <string name="logout">LOGOUT</string>
+
 </resources>

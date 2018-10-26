@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+   >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/mypoints_gradiant_background"
+        android:layout_marginBottom="5dp"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtlabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:text="my point Balance"
+                />
+
+                <TextView
+                    android:id="@+id/txtAvailablePoints"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18pt"
+                    android:text="000"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:freezesText="true"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- A CardView that contains a TextView -->
+            <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_margin="10px"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+                    <ImageView
+                        android:id="@+id/img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icons8_coins_100"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="5dp"
+                        />
+
+                    <LinearLayout
+                        android:id="@+id/Totcontent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_toRightOf="@+id/img"
+                        android:layout_centerVertical="true"
+                        android:visibility="visible"
+                        >
+
+                        <TextView
+                            android:id="@+id/txtTotalPoints"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5px"
+                            android:text="000"
+                            android:textColor="@color/Black"
+                            android:textSize="12pt"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txtTotalPoints"
+                            android:text="Total Points"
+                            android:textColor="@color/colorFontBlack" />
+
+                    </LinearLayout>
+
+
+                    <ProgressBar
+                        android:id="@+id/prgtotal"
+                        style="@style/Widget.AppCompat.ProgressBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="10dp"
+                        />
+
+
+                </RelativeLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_margin="10px"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+                    <ImageView
+                        android:id="@+id/img1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icons8_money_bag_100"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="5dp"
+                        />
+
+                    <LinearLayout
+                        android:id="@+id/Redcontent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_toRightOf="@+id/img1"
+                        android:layout_centerVertical="true"
+                        >
+
+                        <TextView
+                            android:id="@+id/txtRedeem_points"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5px"
+                            android:text="000"
+                            android:textColor="@color/Black"
+                            android:textSize="12pt"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txtTotalPoints"
+                            android:text="Redeemed Points"
+                            android:textColor="@color/colorFontBlack" />
+
+
+                    </LinearLayout>
+
+                    <ProgressBar
+                        android:id="@+id/prgredeem"
+                        style="@style/Widget.AppCompat.ProgressBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="10dp"
+                         />
+
+
+                </RelativeLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+    </ScrollView>
+
+
+
+
+
+
+</LinearLayout>

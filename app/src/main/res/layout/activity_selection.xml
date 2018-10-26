@@ -7,7 +7,20 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:padding="10dp"
-    android:background="@color/appBackground">
+    android:background="@drawable/backx">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
 
 
     <LinearLayout
@@ -16,7 +29,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:weightSum="2">
+        android:layout_marginBottom="10px"
+        android:weightSum="2"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -24,28 +39,21 @@
             android:orientation="vertical"
             android:layout_weight="1">
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                app:cardBackgroundColor="@color/appBackground"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:id="@+id/cardScan"
-                >
-
                 <LinearLayout
+                    android:id="@+id/cardScan"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center"
-                    android:paddingTop="15dp">
+                    android:paddingTop="15dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    >
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/circlebackground_red"
-                        android:src="@mipmap/icon_barcode"
+                        android:background="@drawable/scan_click"
+                        android:src="@drawable/ic_barcode"
                         android:padding="10dp"
 
                         />
@@ -53,102 +61,51 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Scan "
-                        android:fontFamily="monospace"
+                        android:text="@string/scan_barcode"
                         android:gravity="center"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorFontBlack"
+                        android:layout_margin="10px"
+                        android:textStyle="normal"
+                        android:textColor="@color/textColor"
                         />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/colorview"
-                        android:layout_marginTop="10dp"
-                        ></View>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Scan barcode."
-                        android:fontFamily="monospace"
-                        android:padding="10dp"
-                        android:textColor="@color/colorFontOtherBlack"
-                        />
-
 
                 </LinearLayout>
-
-
-            </android.support.v7.widget.CardView>
-
             </LinearLayout>
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical"
             android:layout_weight="1">
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                app:cardBackgroundColor="@color/appBackground"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:id="@+id/cardmypoint"
-                >
 
                 <LinearLayout
+                    android:id="@+id/cardmypoint"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center"
-                    android:paddingTop="15dp">
+                    android:paddingTop="15dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    >
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/circlebackground_red"
-                        android:src="@mipmap/icon_money"
+                        android:background="@drawable/points_click"
+                        android:src="@drawable/ic_money"
                         android:padding="10dp"
                         />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="My point"
-                        android:fontFamily="monospace"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorFontBlack"
-                        />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="@color/colorview"
-                        android:layout_marginTop="10dp"
-                        ></View>
-
-                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="@string/mypoints"
                         android:gravity="center"
-                        android:fontFamily="monospace"
-                        android:text="View my point."
-                        android:padding="10dp"
-                        android:textColor="@color/colorFontOtherBlack"
+                        android:layout_margin="10px"
+                        android:textStyle="normal"
+                        android:textColor="@color/textColor"
                         />
-
-
                 </LinearLayout>
-
-
-            </android.support.v7.widget.CardView>
-
         </LinearLayout>
 
 
@@ -170,63 +127,36 @@
             android:orientation="vertical"
             android:layout_weight="1">
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                app:cardBackgroundColor="@color/appBackground"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:id="@+id/cardhistory"
-                >
 
                 <LinearLayout
+                    android:id="@+id/cardhistory"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center"
-                    android:paddingTop="15dp">
+                    android:paddingTop="15dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    >
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/circlebackground_red"
-                        android:src="@mipmap/icon_history"
+                        android:background="@drawable/history_click"
+                        android:src="@drawable/ic_history"
                         android:padding="10dp"
                         />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Scan History"
-                        android:fontFamily="monospace"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorFontBlack"
-                        />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="@color/colorview"
-                        android:layout_marginTop="10dp"
-                        ></View>
-
-                    <TextView
-                        android:id="@+id/textView2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="@string/scan_history"
                         android:gravity="center"
-                        android:fontFamily="monospace"
-                        android:padding="10dp"
-                        android:text="Scann history."
-                        android:textColor="@color/colorFontOtherBlack" />
-
+                        android:textStyle="normal"
+                        android:textColor="@color/textColor"
+                        />
 
                 </LinearLayout>
-
-
-            </android.support.v7.widget.CardView>
         </LinearLayout>
 
         <LinearLayout
@@ -235,66 +165,42 @@
             android:orientation="vertical"
             android:layout_weight="1">
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                app:cardBackgroundColor="@color/appBackground"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:id="@+id/cardmyinfo"
-                >
 
                 <LinearLayout
+                    android:id="@+id/cardmyinfo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center"
-                    android:paddingTop="15dp">
+                    android:paddingTop="15dp"
+                    android:background="?android:attr/selectableItemBackground">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/circlebackground_red"
-                        android:src="@mipmap/icon_info"
+                        android:background="@drawable/info_click"
+                        android:src="@drawable/ic_user"
                         android:padding="10dp"
                         />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="monospace"
-                        android:text="My info"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorFontBlack"
-                        />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="@color/colorview"
-                        android:layout_marginTop="10dp"
-                        ></View>
-
-                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="@string/my_info"
                         android:gravity="center"
-                        android:fontFamily="monospace"
-                        android:text="Information."
-                        android:padding="10dp"
-                        android:textColor="@color/colorFontOtherBlack"
+                        android:textStyle="normal"
+                        android:textColor="@color/textColor"
                         />
-
 
                 </LinearLayout>
-
-
-            </android.support.v7.widget.CardView>
 
         </LinearLayout>
 
 
     </LinearLayout>
+
+
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

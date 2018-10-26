@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+        >
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icons8_open_envelope_100"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="20dp"
+        />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/vertification"
+            android:textStyle="bold"
+            android:textColor="@color/Black"
+            android:textSize="8pt"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="10px"
+            android:text="@string/verificationtext"
+            android:textStyle="normal"
+            android:textColor="@color/Black"
+            />
+
+    <TextView
+        android:id="@+id/lblnumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10px"
+        android:gravity="center"
+        android:text="+94"
+        android:textColor="@color/Black"
+        android:textStyle="normal" />
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/n1"
+                android:layout_width="25pt"
+                android:layout_height="wrap_content"
+                android:layout_margin="10px"
+                android:textSize="12pt"
+                android:textStyle="bold"
+                android:textColor="@color/Black"
+                android:gravity="center"
+                android:padding="10dp"
+                android:background="@drawable/textborder"
+                android:inputType="number"
+                android:maxLength="1"
+                android:nextFocusDown="@id/n2"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/n2"
+                android:layout_width="25pt"
+                android:layout_height="wrap_content"
+                android:layout_margin="10px"
+                android:textSize="12pt"
+                android:textStyle="bold"
+                android:textColor="@color/Black"
+                android:gravity="center"
+                android:padding="10dp"
+                android:background="@drawable/textborder"
+                android:inputType="number"
+                android:maxLength="1"
+                android:nextFocusDown="@id/n3"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/n3"
+                android:layout_width="25pt"
+                android:layout_height="wrap_content"
+                android:layout_margin="10px"
+                android:textSize="12pt"
+                android:textStyle="bold"
+                android:textColor="@color/Black"
+                android:gravity="center"
+                android:padding="10dp"
+                android:background="@drawable/textborder"
+                android:inputType="number"
+                android:maxLength="1"
+                android:nextFocusDown="@id/n4"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/n4"
+                android:layout_width="25pt"
+                android:layout_height="wrap_content"
+                android:layout_margin="10px"
+                android:textSize="12pt"
+                android:textStyle="bold"
+                android:textColor="@color/Black"
+                android:gravity="center"
+                android:padding="10dp"
+                android:background="@drawable/textborder"
+                android:inputType="number"
+                android:maxLength="1"
+                android:imeOptions="actionDone"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/txtreset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="10px"
+            android:text="@string/verificationresend"
+            android:textStyle="normal"
+            android:textColor="@color/Black"
+
+            />
+
+        <TextView
+            android:id="@+id/lblresend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10px"
+            android:text="@string/resend"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_toRightOf="@id/txtreset"
+            />
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/btnverify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/verify"
+        android:theme="@style/MyButton"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="30dp"
+        />
+
+</LinearLayout>
+    </ScrollView>
+
+
+
