@@ -62,8 +62,6 @@ public class MypointsActivity extends AppCompatActivity {
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 

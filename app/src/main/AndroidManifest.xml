@@ -60,7 +60,10 @@
                 android:value=".SelectionActivity"></meta-data>
         </activity>
 
-        <activity android:name=".UserController.MyinfoActivity" />
+        <activity android:name=".UserController.MyinfoActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SelectionActivity"></meta-data>
+        </activity>
         <activity
             android:name=".UserController.MobileVerificationActivity"
             android:configChanges="orientation|keyboard"
