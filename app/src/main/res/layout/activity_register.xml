@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:textColor="@color/colorFontBlack"
-                android:text="Contact Number"
+                android:text="Mobile Number"
                 android:drawableLeft="@drawable/ic_contact_black"
                 android:drawablePadding="10px"
                 />

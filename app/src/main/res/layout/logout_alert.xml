@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorview"
+    android:layout_marginBottom="10px">
+
+    <TextView
+        android:id="@+id/lblheader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/alertsend"
+        android:textSize="15dp"
+        android:layout_marginTop="30px"
+        android:textStyle="bold"
+        android:textColor="@color/Black"
+        android:layout_gravity="center"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+
+        <ImageView
+            android:id="@+id/imgsensor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_alert"
+            android:layout_marginTop="15px"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/lbltext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alertdialogexsit"
+            android:textColor="@color/Black"
+            android:layout_marginTop="15px"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imgsensor"/>
+
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15px"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:weightSum="2">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <Button
+                android:id="@+id/btncancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-10px"
+                android:layout_marginRight="0dp"
+                android:layout_alignParentRight="true"
+                android:theme="@style/MyButton"
+                android:fontFamily="monospace"
+                android:text="CANCEL"
+                android:textStyle="bold"
+            />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btnlogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/MyButton"
+                android:layout_marginLeft="0px"
+                android:layout_marginRight="-10px"
+                android:layout_alignParentLeft="true"
+                android:fontFamily="monospace"
+                android:textStyle="bold"
+                android:text="LOGOUT"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

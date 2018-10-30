@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +34,13 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 
 import reader.com.nipponit.readerapp.Database.AppDB;
 import reader.com.nipponit.readerapp.HttpConnector.Connector;
@@ -42,8 +50,9 @@ import reader.com.nipponit.readerapp.R;
 public class RegisterActivity extends AppCompatActivity {
     TextView txtname,txtnic,txtemail,txtcontact,txtpassword;
     Button btnregister;
-    boolean stsnic=false,stsnumber=false,stsname=false,stspassword=false;
+    boolean stsnic=false,stsnumber=false,stsname=false,stspassword=false,stsemail=false;
     AppDB LocalDb;
+    passwordEncryption pEncryption;
     String LocalNumber="0",ImeiNumber="0";
     private final int REQUSET_PHONE_STATE = 1;
     static String KEY="TELNO";
@@ -147,7 +156,28 @@ public class RegisterActivity extends AppCompatActivity {
                 validateContact();
             }
         });
+        txtemail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                validateEmail();
+            }
+        });
+        txtemail.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                validateEmail();
+            }
+        });
     }
 
     private boolean checkPermission(){
@@ -207,6 +237,18 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
+    private void validateEmail(){
+        String txt = txtemail.getText().toString();
+        if(txt.indexOf("@")<0){
+            txtemail.setTextColor(Color.RED);
+            stsemail=false;
+        }else{
+            txtemail.setTextColor(Color.parseColor("#999999"));
+            stsemail=true;
+        }
+    }
+
+
     class UserRegistration extends AsyncTask<Void,Void,String>{
         ProgressDialog progressDialog;
         String name,nic,contact,email,password;
@@ -228,16 +270,22 @@ public class RegisterActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog = new ProgressDialog(RegisterActivity.this);
-            progressDialog.setMessage("Registering new user account");
-            progressDialog.setCancelable(false);
-            progressDialog.show();
+            try {
+                progressDialog = new ProgressDialog(RegisterActivity.this);
+                progressDialog.setMessage("Registering new user account");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
 
-            name = txtname.getText().toString();
-            nic = txtnic.getText().toString();
-            contact = txtcontact.getText().toString();
-            email = txtemail.getText().toString();
-            password = txtpassword.getText().toString();
+                name = txtname.getText().toString();
+                nic = txtnic.getText().toString();
+                contact = txtcontact.getText().toString();
+                email = txtemail.getText().toString();
+                password = txtpassword.getText().toString();
+                pEncryption = new passwordEncryption(password);
+                password = pEncryption.EnPassword().trim();
+            }catch (Exception ex){
+
+            }
         }
 
         @Override

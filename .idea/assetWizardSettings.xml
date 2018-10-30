@@ -23,7 +23,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_assignment_ind_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/alert/ic_warning_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -34,9 +34,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="imageAsset" value="C:\Users\manojm\Downloads\qr-code (1).png" />
-                                      <entry key="outputName" value="ic_nic_black" />
-                                      <entry key="theme" value="CUSTOM" />
-                                      <entry key="themeColor" value="3c3f41" />
+                                      <entry key="outputName" value="ic_alert" />
+                                      <entry key="themeColor" value="ff0b23" />
                                     </map>
                                   </option>
                                 </PersistentState>

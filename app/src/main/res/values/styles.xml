@@ -23,6 +23,10 @@
         <item name="android:textColor">@color/appBackground</item>
     </style>
 
+    <style name="MyProgressBar" parent="@style/Widget.AppCompat.ProgressBar">
+        <item name="colorAccent">#ffff</item>
+        <item name="android:background">#ffff</item>
+    </style>
 
 
 </resources>

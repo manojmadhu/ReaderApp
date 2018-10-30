@@ -24,7 +24,7 @@
     <string name="mypoints">My Points</string>
     <string name="scan_history">Scan History</string>
     <string name="my_info">My Info</string>
-    <string name="mobilehint">Mobile number (ex: 0771234567)</string>
+    <string name="mobilehint">ex: 0771234567</string>
 
     <string name="vertification">Verification Code</string>
     <string name="verificationtext">Please type the verification code sent to</string>
@@ -41,8 +41,9 @@
     <string name="confirm">Confirm  password</string>
     <string name="newpassword">New Password</string>
 
-    <string name="alertdialogexsit">Are you sure to Logout?</string>
-    <string name="alertsend">System message</string>
+    <string name="alertdialogexsit">Are you sure to logout from the system?</string>
+    <string name="alertsend">Message</string>
     <string name="logout">LOGOUT</string>
+    <string name="alertsendbarcode">Are you sure to send scanned Barcode(s)?</string>
 
 </resources>

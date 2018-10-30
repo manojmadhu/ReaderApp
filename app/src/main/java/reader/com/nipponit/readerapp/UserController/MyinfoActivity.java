@@ -9,8 +9,10 @@ import android.os.AsyncTask;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import reader.com.nipponit.readerapp.Database.AppDB;
@@ -77,28 +79,33 @@ public class MyinfoActivity extends AppCompatActivity {
     public void OnLogout(View v){
 
         appDB = new AppDB(MyinfoActivity.this);
-        AlertDialog dialog=new AlertDialog.Builder(MyinfoActivity.this,R.style.Theme_AppCompat_DayNight_Dialog_Alert).create();
-        dialog.setMessage("Are you sure want to Logout?");
-        dialog.setButton(AlertDialog.BUTTON_POSITIVE, "Logout", new DialogInterface.OnClickListener() {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(MyinfoActivity.this);
+        final View view = LayoutInflater.from(MyinfoActivity.this).inflate(R.layout.logout_alert,null);
+        Button btnlogout = (Button)view.findViewById(R.id.btnlogout);
+        Button btncancel = (Button)view.findViewById(R.id.btncancel);
+        builder.setView(view);
+        final AlertDialog AD = builder.show();
+
+        btnlogout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //appDB.ClearUser();
+            public void onClick(View v) {
+                appDB.ClearUser();
                 Intent intent=new Intent(MyinfoActivity.this,SelectionActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 intent.putExtra("Exit",true);
                 startActivity(intent);
+                AD.dismiss();
             }
         });
 
-        dialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+        btncancel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
+            public void onClick(View v) {
+                AD.dismiss();
             }
         });
-        dialog.show();
-
     }
 
 

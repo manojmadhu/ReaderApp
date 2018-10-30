@@ -13,9 +13,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +29,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
+import java.util.zip.Inflater;
 
 import reader.com.nipponit.readerapp.BarcodeReader.*;
 import reader.com.nipponit.readerapp.Database.AppDB;
@@ -100,22 +104,28 @@ public class ScanActivity extends AppCompatActivity implements BarcodeReader.Bar
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
             case R.id.send:
-                AlertDialog dialog=new AlertDialog.Builder(ScanActivity.this,R.style.Theme_AppCompat_DayNight_Dialog_Alert).create();
-                dialog.setMessage("Are you sure want to send Barcode(s)?");
-                dialog.setButton(AlertDialog.BUTTON_POSITIVE, "Send", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        new SendBarcodes().execute();
-                    }
-                });
 
-                dialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ScanActivity.this);
+                View view = LayoutInflater.from(ScanActivity.this).inflate(R.layout.layout_send,null);
+                builder.setView(view);
+
+                final AlertDialog AD = builder.show();
+
+                Button btncancel = (Button)view.findViewById(R.id.btncancel);
+                btncancel.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
+                    public void onClick(View v) {
+                        AD.dismiss();
                     }
                 });
-                dialog.show();
+                Button btnsend=(Button)view.findViewById(R.id.btnsend);
+                btnsend.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        new SendBarcodes().execute();
+                        AD.dismiss();
+                    }
+                });
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -172,14 +182,18 @@ public class ScanActivity extends AppCompatActivity implements BarcodeReader.Bar
      */
     class SendBarcodes extends AsyncTask<String,String,String>{
 
-        ProgressDialog prgdialog= new ProgressDialog(ScanActivity.this,R.style.Theme_AppCompat_DayNight_Dialog_Alert);
+        AlertDialog.Builder prgdialog= new AlertDialog.Builder(ScanActivity.this);
+        AlertDialog AD;
+        View view = LayoutInflater.from(ScanActivity.this).inflate(R.layout.layout_progress,null);
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             LocalDb = new AppDB(getApplicationContext());
-            prgdialog.setMessage("Please wait.Sending scanned Barcode(s).");
+            prgdialog.setView(view);
             prgdialog.setCancelable(false);
-            prgdialog.show();
+            TextView lbl=(TextView)view.findViewById(R.id.lbltext);
+            lbl.setText("Please wait. Sending scanned Barcode(s).");
+            AD = prgdialog.show();
         }
 
         @Override
@@ -211,7 +225,7 @@ public class ScanActivity extends AppCompatActivity implements BarcodeReader.Bar
                 }
             }else
                 Toast.makeText(ScanActivity.this, "Connection error. Check your internet connection.", Toast.LENGTH_SHORT).show();
-            prgdialog.dismiss();
+           AD.dismiss();
         }
     }
 
