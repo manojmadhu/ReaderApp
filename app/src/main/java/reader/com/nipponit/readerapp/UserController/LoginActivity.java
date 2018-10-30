@@ -1,6 +1,7 @@
 package reader.com.nipponit.readerapp.UserController;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.os.NetworkOnMainThreadException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Layout;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -36,6 +38,7 @@ import reader.com.nipponit.readerapp.Database.AppDB;
 import reader.com.nipponit.readerapp.HttpConnector.Connector;
 import reader.com.nipponit.readerapp.HttpConnector.PackLoginData;
 import reader.com.nipponit.readerapp.R;
+import reader.com.nipponit.readerapp.ScanActivity;
 import reader.com.nipponit.readerapp.SelectionActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -43,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView txtnic,txtpassword,txtforgetpw;
     Button btnlogin; TextView btnregister;
     AppDB LocalDb;
+    passwordEncryption pEncryption;
     static int REQUSET_CODE=0,RESULT_CODE=0;
     static String UID="";
 
@@ -105,7 +109,9 @@ public class LoginActivity extends AppCompatActivity {
 
     class UserAuthorization extends AsyncTask<Void,Void,String>{
 
-        ProgressDialog progressDialog;
+        AlertDialog.Builder progressDialog;
+        AlertDialog AD;
+        View view = LayoutInflater.from(LoginActivity.this).inflate(R.layout.layout_progress,null);
         String userName,password;
 
         @Override
@@ -121,23 +127,31 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog = new ProgressDialog(LoginActivity.this);
-            progressDialog.setMessage("Checking User Account");
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            try{
+            progressDialog = new AlertDialog.Builder(LoginActivity.this);
+            progressDialog.setView(view);
+            AD = progressDialog.show();
             progressDialog.setCancelable(false);
-            progressDialog.show();
+                TextView lbl=(TextView)view.findViewById(R.id.lbltext);
+                lbl.setText("Please wait. Validating user account.");
+
 
             userName = txtnic.getText().toString();
             password = txtpassword.getText().toString();
 
+            pEncryption = new passwordEncryption(password);
+            password = pEncryption.EnPassword().trim();
+
             LocalDb = new AppDB(getApplicationContext());
+            }catch (Exception ex){
+
+            }
         }
 
 
         @Override
         protected void onPostExecute(String response) {
             super.onPostExecute(response);
-            progressDialog.dismiss();
             String userResult = response;
             String id="",name="",nic="",contact="",email="";
 
@@ -178,7 +192,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
             }
-
+            AD.dismiss();
         }
 
 
